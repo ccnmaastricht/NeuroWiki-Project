@@ -113,7 +113,7 @@ No wiki content should be used for modeling decisions or manuscript writing unti
 
 - **Drop PDFs into `raw/` and run ingestion.** Don't manually summarize papers into wiki pages.
 - **There are no per-paper pages.** Look for the concept (`REG_v1-layer4`, `PHE_orientation-tuning`) — the synthesis is there with citations.
-- **Keep PDFs local.** `raw/` is excluded from git via `.git/info/exclude`. Never commit PDFs to a shared repo. Only add papers you have legitimate access to.
+- **Keep PDFs local.** `raw/` is excluded from git via `.gitignore`. Never commit PDFs to a shared repo. Only add papers you have legitimate access to.
 - **`†` means unverified against source.** If it matters for your work, add the PDF and run ingestion to promote it.
 - **Don't edit pages manually** unless correcting a clear factual error. Add `<!-- QUERY: <concern> -->` and address it in the next agent session so the correction is sourced.
 - **Check `wiki/index.md` first** before asking the agent to create a new page — the concept may already exist under a different slug.

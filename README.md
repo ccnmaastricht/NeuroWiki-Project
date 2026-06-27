@@ -87,7 +87,7 @@ Labs can contribute their project wikis to **[NeuroWiki Commons](https://github.
 NeuroWiki produces scholarly synthesis — paraphrased, cited wiki pages — from papers users have legitimately accessed. This is standard academic practice equivalent to writing a literature review or review article.
 
 **PDFs and the `raw/` folder:**
-- `raw/` is excluded from git tracking by default (via `.git/info/exclude`, set by `setup.sh`). PDFs are never committed to any repository.
+- `raw/` is excluded from git tracking by default (via `.gitignore`, set by `setup.sh`). PDFs are never committed to any repository.
 - Users are responsible for ensuring they have legitimate access to any PDF placed in `raw/` through institutional site licenses, open access, or author-provided copies.
 - PDFs must never be committed to shared or public repositories, and are explicitly excluded from NeuroWiki Commons submissions.
 

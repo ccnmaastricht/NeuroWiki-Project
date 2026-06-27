@@ -12,16 +12,9 @@ echo "Setting up NeuroWiki project: $PROJECT_NAME"
 # Create directory structure
 mkdir -p raw wiki/pages
 
-# Exclude raw/ from git locally without touching .gitignore
-# This means PDFs are never accidentally committed, and no commenting/uncommenting
-# is needed during ingestion sessions — the agent sees raw/ on disk, git never does.
-mkdir -p .git/info
-if [ -f .git/info/exclude ]; then
-    grep -q "^raw/$" .git/info/exclude || echo "raw/" >> .git/info/exclude
-else
-    echo "raw/" > .git/info/exclude
-fi
-echo "raw/ excluded from git tracking (via .git/info/exclude)"
+# Ensure raw/ is excluded from git via .gitignore
+grep -q "^raw/$" .gitignore 2>/dev/null || echo "raw/" >> .gitignore
+echo "raw/ excluded from git tracking (via .gitignore)"
 
 # Initialize wiki files
 cat > wiki/primary.bib << 'BIBEOF'
@@ -78,7 +71,7 @@ INDEXEOF
 echo ""
 echo "Done. Next steps:"
 echo "  1. Open AGENT.md and fill in Section 1 (Project Identity)"
-echo "  2. Add PDFs to raw/ (never committed to git — see .git/info/exclude)"
+echo "  2. Add PDFs to raw/ (never committed to git — excluded via .gitignore)"
 echo "  3. Start an ingestion session using a prompt from QUICKSTART.md"
 echo ""
 echo "Folder structure created:"
