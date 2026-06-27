@@ -1,8 +1,8 @@
 # NeuroWiki
 
-**This is a GitHub template repository.** Create one copy per project or research line — click **Use this template** on GitHub, then follow the Quickstart below.
+**This is a GitHub template repository.** Create one copy per project or research line. Click **Use this template** on GitHub, then follow the Quickstart below.
 
-NeuroWiki is a modular LLM-agent system for building and maintaining citation-grounded knowledge bases in computational neuroscience. Papers go in; structured, synthesized, cross-linked wiki pages come out.
+NeuroWiki is a modular LLM-agent system for building and maintaining citation-grounded knowledge bases in neuroscience. Papers go in; structured, synthesized, cross-linked wiki pages come out.
 
 **[neurowiki.github.io](https://neurowiki.github.io)** · **[Example project wiki](https://github.com/neurowiki/example-hippocampus)**
 
@@ -89,11 +89,11 @@ Lab wiki     ← lab level (separate repo; merges project wikis across a lab)
 NeuroWiki    ← project level (this repo)
 ```
 
-When a project wiki is ready to share, it can be submitted to a lab wiki repository via pull request — the same fork-copy-PR workflow described in **[CONTRIBUTING.md](CONTRIBUTING.md)**. The lab wiki merges contributions from all projects within a lab into a unified synthesis.
+When a project wiki is ready to share, it can be submitted to a lab wiki repository via pull request using the fork-copy-PR workflow described in **[CONTRIBUTING.md](CONTRIBUTING.md)**. The lab wiki merges contributions from all projects within a lab into a unified synthesis.
 
 ## Legal notice
 
-NeuroWiki produces scholarly synthesis — paraphrased, cited wiki pages — from papers users have legitimately accessed. This is standard academic practice equivalent to writing a literature review or review article.
+NeuroWiki produces scholarly synthesis from papers users have legitimately accessed. This is standard academic practice equivalent to writing a literature review or review article.
 
 **PDFs and the `raw/` folder:**
 - `raw/` is excluded from git tracking by default (via `.gitignore`, set by `setup.sh`). PDFs are never committed to any repository.
