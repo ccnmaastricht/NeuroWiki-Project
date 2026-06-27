@@ -1,0 +1,161 @@
+# VERIFICATION.md — Human Verification Protocol
+
+No wiki content should be used in a manuscript, grant, or modeling decision
+until the verification checklist for that page's most recent session has been signed off.
+
+---
+
+## Responsibilities
+
+| Role | Responsibility |
+|------|---------------|
+| PI | Signs off on all confidence changes and all `⚑ Human review required` flags |
+| PhD students | Spot-check pages in their domain after sessions they initiate; sign off |
+| Any lab member running a session | Complete the post-session checklist before closing |
+
+---
+
+## Post-Session Checklist — Ingestion
+
+### 1. Read the session summary
+
+- [ ] Pages created and modified
+- [ ] Confidence changes
+- [ ] Secondary entries added
+- [ ] Flags: `⚑`, `<!-- UNCITED -->`, `<!-- UNRESOLVED -->`
+- [ ] Promotion performed (yes/no)
+
+### 2. Spot-check claims
+
+| Pages modified | Minimum claims to verify |
+|----------------|--------------------------|
+| 1–3 | 3 per page |
+| 4–6 | 2 per page |
+| 7+ | 1 per page + all flagged items |
+
+Prioritize: new claims, `†` citations, quantitative claims, Empirical Basis and Core Assumptions sections.
+For promoted papers: verify minimum 5 claims on the most heavily affected page.
+
+To verify: open the source PDF, confirm the claim accurately represents the source including its caveats. If inaccurate: correct in the page and note in the session log.
+
+### 3. Review confidence changes
+
+- [ ] Is the change justified by cited evidence in the Controversies section?
+- [ ] Upgrades to `established`: are there genuinely two or more independent sources? If not, revert to `debated`.
+- [ ] Downgrades: is the contradicting evidence strong or a single outlier?
+
+### 4. Resolve flags
+
+**`⚑ Human review required`** (PI):
+- Read both cited positions
+- If resolvable: update Controversies entry, set status, remove flag from page header
+- If not: leave flag, discuss with project team if it affects a modeling decision
+
+**`<!-- UNCITED -->`**:
+- If source identifiable: add citation, remove flag
+- If not: leave flag; schedule for next relevant ingestion session
+
+**`<!-- UNRESOLVED -->`**:
+- If important: add PDF to `raw/` and process in next ingestion session
+- If peripheral: note in session log
+
+### 5. Sign off
+
+Add a completed entry to `wiki/log.md` and mark ✓ Verified.
+
+---
+
+## Post-Session Checklist — Refinement
+
+**After REFINE_A:**
+- [ ] Note all `<!-- MISSING -->` stubs for the next ingestion session
+- [ ] Spot-check 3–5 pages to confirm content was not altered during restructuring
+- [ ] Confirm no citation notation was corrupted
+
+**After REFINE_B:**
+- [ ] PI reads `wiki/depth-audit-YYYY-MM-DD.md` in full
+- [ ] Prioritize PDF acquisition list; schedule ingestion accordingly
+- [ ] Note action items in session log
+
+**After REFINE_C:**
+- [ ] Spot-check 5 added links — confirm correct target and substantive mention
+- [ ] Review the "concepts with no page" list — decide which warrant new pages
+- [ ] Confirm no links were added inside headings, metadata fields, or citations
+
+---
+
+## Periodic Review
+
+**Monthly** (PhD student, reviewed by PI):
+- Read `wiki/index.md` in full
+- For each `debated` or `speculative` page: has new literature been added that should change it?
+- Identify accumulating `<!-- UNCITED -->` and `<!-- UNRESOLVED -->` flags without resolution
+- Run REFINE_B if not done in the past month
+
+**Before manuscript submission** (PI):
+- [ ] Verify all manuscript citations against their source PDFs
+- [ ] Confirm no `†` citations used for manuscript claims without independent verification
+- [ ] Confirm confidence levels are appropriate for the claims being made
+- [ ] Resolve all outstanding `⚑` and `<!-- UNCITED -->` flags on cited pages
+
+**Before a modeling decision** (PI + PhD student):
+- [ ] Relevant sections are `established` or explicitly `debated`
+- [ ] All quantitative values used are cited to primary sources (no `†`)
+- [ ] Any `†` claim either promoted or explicitly flagged as an assumption in the modeling write-up
+
+---
+
+## Red Lines
+
+| Situation | Action |
+|-----------|--------|
+| Spot-check finds a claim directly contradicted by its cited source | Check all claims from that session — possible systematic agent error |
+| Page is `established` but rests on a single primary source | Downgrade to `debated`; investigate |
+| A `†` citation is significantly misrepresented relative to the source | Re-evaluate all secondary citations on that page |
+| A modeling parameter is uncited or incorrectly cited | Halt use of that parameter until verified |
+
+For any red line, add to the top of the affected page:
+
+```
+> 🛑 PAGE UNDER REVIEW — do not use for modeling or writing
+> Reason: <description> — flagged YYYY-MM-DD by <name>
+```
+
+Remove only after PI sign-off on a corrected, re-verified version.
+
+---
+
+## Session Log Format
+
+Every session gets one entry in `wiki/log.md`:
+
+```markdown
+## Session YYYY-MM-DD — <PDF filename or Refinement REFINE_A/B/C>
+
+**Run by**: 
+**Verified by**: 
+**Verification date**: 
+
+### Changes
+- Pages created: 
+- Pages modified: 
+- Confidence changes: <page: old → new — justification>
+- Secondary entries added: 
+- Promotion: <yes — @Key / no>
+
+### Flags raised
+- ⚑ Human review: <page — issue>
+- UNCITED: <page — claim>
+- UNRESOLVED: <description>
+
+### Flags resolved this session
+- 
+
+### Spot-check results
+- <page>, "<claim>": verified ✓ / corrected: <correction>
+
+### Action items
+- 
+
+**Sign-off**: ✓ Verified
+```
