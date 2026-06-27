@@ -1,12 +1,12 @@
-# Contributing to NeuroWiki Commons
+# Contributing to a Lab Wiki
 
-NeuroWiki Commons is a community-maintained, citation-grounded knowledge base for computational neuroscience. It is built from project-level wikis submitted by labs worldwide and synthesized by LLM agents following a strict provenance and quality protocol.
+A lab wiki is a lab-level knowledge base that merges multiple NeuroWiki project wikis into a unified synthesis. It is maintained by a lab or group and built from project-level wikis submitted by individual researchers, synthesized by LLM agents following a strict provenance and quality protocol.
 
 ---
 
 ## What You Are Contributing
 
-You are submitting a project-level wiki — a folder of structured markdown pages covering phenomena, models, theories, brain regions, and experimental paradigms relevant to your research. Your pages will be synthesized into the community wiki, enriching shared pages where your evidence overlaps with existing content and creating new pages where it does not.
+You are submitting a project-level wiki — a folder of structured markdown pages covering phenomena, models, theories, brain regions, and experimental paradigms relevant to your research. Your pages will be synthesized into the lab wiki, enriching shared pages where your evidence overlaps with existing content and creating new pages where it does not.
 
 Your original citation keys are preserved. Your lab is credited in the `provenance` field of every page you contribute to.
 
@@ -37,7 +37,7 @@ Your `wiki/log.md` must contain at least one verified session entry (signed off 
 
 ## Submission Process
 
-1. **Fork** the NeuroWiki Commons repository on GitHub
+1. **Fork** your lab wiki repository on GitHub
 2. **Copy** your `wiki/pages/` folder into `submissions/<YourLabName>/`
 3. **Copy** your `wiki/primary.bib` and `wiki/secondary.bib` into the same folder
 4. **Copy** your `wiki/log.md` into the same folder
@@ -63,7 +63,7 @@ The following is checked automatically by CI and must also be confirmed by you:
 
 1. CI runs the hub's validation and merge scripts automatically — structural errors block the PR
 2. A community reviewer (rotating maintainer) reviews the merge report and spot-checks a sample of claims
-3. The agent synthesizes your pages into the community wiki on a branch
+3. The agent synthesizes your pages into the lab wiki on a branch
 4. The reviewer approves the branch and merges
 
 Turnaround target: 2 weeks. You will be tagged on the PR if clarification is needed.
@@ -80,7 +80,7 @@ Community confidence is more conservative than project-level confidence:
 | `debated` | Conflicting claims across submissions, or one submission with debated status |
 | `speculative` | Single submission, or thin evidence noted in source project |
 
-Your submission will not be rejected for having `speculative` pages — the community wiki explicitly tracks the state of knowledge including what is uncertain.
+Your submission will not be rejected for having `speculative` pages — the lab wiki explicitly tracks the state of knowledge including what is uncertain.
 
 ---
 

@@ -4,7 +4,7 @@
 
 NeuroWiki is a modular LLM-agent system for building and maintaining citation-grounded knowledge bases in computational neuroscience. Papers go in; structured, synthesized, cross-linked wiki pages come out.
 
-**[neurowiki.github.io](https://neurowiki.github.io)** · **[Example project wiki](https://github.com/neurowiki/example-hippocampus)** · **[NeuroWiki Commons](https://github.com/neurowiki/commons)**
+**[neurowiki.github.io](https://neurowiki.github.io)** · **[Example project wiki](https://github.com/neurowiki/example-hippocampus)**
 
 ---
 
@@ -15,7 +15,7 @@ NeuroWiki is a modular LLM-agent system for building and maintaining citation-gr
 - Surfaces conflicts between papers for human review rather than silently resolving them
 - Maintains confidence levels (`established` / `debated` / `speculative`) on every page
 - Supports structural harmonization, depth auditing, and cross-link auditing as independent refinement workflows
-- Scales from a single project to a cross-lab community wiki via pull request submission
+- Scales from a single project into a lab-level wiki via pull request submission to a lab wiki repository
 
 ## Repo layout
 
@@ -32,7 +32,7 @@ neurowiki/                     ← this template repo
 ├── GEMINI.md                  ← Gemini CLI bootstrap → reads AGENT.md
 ├── CURSOR.md                  ← Cursor bootstrap → reads AGENT.md
 ├── AGENTS.md                  ← OpenAI Codex bootstrap → reads AGENT.md
-├── CONTRIBUTING.md            ← community wiki submission guide
+├── CONTRIBUTING.md            ← lab wiki submission guide
 ├── VERIFICATION.md            ← human verification protocol
 ├── QUICKSTART.md              ← setup guide and session invocation prompts
 ├── README.md                  ← this file
@@ -79,9 +79,17 @@ NeuroWiki works with any LLM agent. Bootstrap files auto-load `AGENT.md` on laun
 | OpenAI Codex | `AGENTS.md` |
 | Any other agent | Use invocation prompts from `QUICKSTART.md` |
 
-## Community wiki
+## Ecosystem
 
-Labs can contribute their project wikis to **[NeuroWiki Commons](https://github.com/neurowiki/commons)** — a cross-lab synthesis maintained by the community. See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the submission process.
+NeuroWiki is the project layer of a two-tier local knowledge stack:
+
+```
+Lab wiki     ← lab level (separate repo; merges project wikis across a lab)
+        ↑
+NeuroWiki    ← project level (this repo)
+```
+
+When a project wiki is ready to share, it can be submitted to a lab wiki repository via pull request — the same fork-copy-PR workflow described in **[CONTRIBUTING.md](CONTRIBUTING.md)**. The lab wiki merges contributions from all projects within a lab into a unified synthesis.
 
 ## Legal notice
 
@@ -90,7 +98,7 @@ NeuroWiki produces scholarly synthesis — paraphrased, cited wiki pages — fro
 **PDFs and the `raw/` folder:**
 - `raw/` is excluded from git tracking by default (via `.gitignore`, set by `setup.sh`). PDFs are never committed to any repository.
 - Users are responsible for ensuring they have legitimate access to any PDF placed in `raw/` through institutional site licenses, open access, or author-provided copies.
-- PDFs must never be committed to shared or public repositories, and are explicitly excluded from NeuroWiki Commons submissions.
+- PDFs must never be committed to shared or public repositories, and are explicitly excluded from lab wiki submissions.
 
 **Wiki pages:**
 - The synthesized wiki pages are the user's own scholarly work. They paraphrase and cite sources; they do not reproduce substantial portions of copyrighted text.

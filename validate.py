@@ -102,6 +102,7 @@ def main():
     parser = argparse.ArgumentParser(description="NeuroWiki pre-submission validator")
     parser.add_argument("--source", required=True, help="Path to wiki/ directory")
     parser.add_argument("--report", default=None, help="Output JSON report path (optional)")
+    parser.add_argument("--skip-log", action="store_true", help="Skip the log.md verification check (used in CI)")
     args = parser.parse_args()
 
     wiki_path = Path(args.source)
@@ -145,7 +146,7 @@ def main():
             f"(@{key}†) used as secondary citation but not found in secondary.bib"
         )
 
-    report["log_errors"] = check_log(wiki_path)
+    report["log_errors"] = [] if args.skip_log else check_log(wiki_path)
 
     total_errors = (
         len(report["page_errors"]) +

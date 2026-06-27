@@ -147,8 +147,8 @@
     </div>
     <div class="feature">
       <div class="feature-icon">🌐</div>
-      <h3>Scales to the field</h3>
-      <p>Project wikis submit to NeuroWiki Commons via pull request. Your evidence enriches a shared cross-lab synthesis, with your lab credited in every page you contribute to.</p>
+      <h3>Scales to the lab</h3>
+      <p>Project wikis submit to a lab wiki via pull request. Evidence from all projects in a lab is synthesized into a shared lab-level knowledge base, with each project credited in every page it contributes to.</p>
     </div>
   </div>
 </section>
@@ -156,27 +156,20 @@
 <section id="layers">
   <div class="section-label">Architecture</div>
   <h2>Three layers, one knowledge system</h2>
-  <p class="section-intro">Start with a single project. Optionally merge into a lab wiki. Contribute to the community.</p>
+  <p class="section-intro">Start with a single project. Merge into a lab-level wiki.</p>
   <div class="layers">
     <div class="layer">
-      <div><span class="layer-label project">Project wiki</span></div>
+      <div><span class="layer-label project">NeuroWiki</span></div>
       <div>
-        <h3>One per research line</h3>
-        <p>Maintained by a PI and PhD students. PDFs go in <code>raw/</code>; the agent synthesizes them into concept pages. Verified by humans after every session.</p>
+        <h3>Project level — this repo</h3>
+        <p>One copy per research line. PDFs go in <code>raw/</code>; the agent synthesizes them into concept pages. Verified by humans after every session.</p>
       </div>
     </div>
     <div class="layer">
-      <div><span class="layer-label lab">Lab wiki (optional)</span></div>
+      <div><span class="layer-label lab">Lab wiki</span></div>
       <div>
-        <h3>Merges all project wikis within a lab</h3>
-        <p>The hub runs a merge script and an LLM agent workflow to synthesize pages on the same concept — not concatenate them. Serves as the quality gate before community submission.</p>
-      </div>
-    </div>
-    <div class="layer">
-      <div><span class="layer-label community">NeuroWiki Commons</span></div>
-      <div>
-        <h3>Cross-lab community knowledge base</h3>
-        <p>Labs submit via GitHub pull request. Automated CI validates structure. A rotating human reviewer approves the merge. Contributing labs are credited in the provenance field of every page they enrich.</p>
+        <h3>Lab level — separate repo</h3>
+        <p>Merges project wikis from across a lab into a unified synthesis. The lab wiki runs a merge script and LLM agent workflow to synthesize overlapping pages, not concatenate them.</p>
       </div>
     </div>
   </div>
@@ -237,8 +230,8 @@
     <div class="step">
       <div class="step-num">5</div>
       <div>
-        <h3>Contribute to NeuroWiki Commons</h3>
-        <p>Submit via pull request. Automated CI checks structure. A human reviewer approves. Your evidence enriches the shared cross-lab knowledge base.</p>
+        <h3>Contribute to your lab wiki</h3>
+        <p>Run <code>validate.py</code>, then submit via pull request to your lab wiki repository. A lab maintainer reviews the merge report and approves. Your evidence enriches the shared lab-level knowledge base.</p>
       </div>
     </div>
   </div>
@@ -283,7 +276,7 @@
   <div class="hero-actions">
     <a class="btn btn-white" href="https://github.com/neurowiki/neurowiki" target="_blank">Get the template →</a>
     <a class="btn btn-ghost" href="https://github.com/neurowiki/example-hippocampus" target="_blank">See example wiki</a>
-    <a class="btn btn-ghost" href="https://github.com/neurowiki/commons" target="_blank">NeuroWiki Commons</a>
+    <a class="btn btn-ghost" href="#layers">How it fits together</a>
   </div>
 </div>
 
@@ -291,7 +284,6 @@
   NeuroWiki is open source under the Apache 2.0 license · Built for computational neuroscience labs worldwide<br><br>
   <a href="https://github.com/neurowiki/neurowiki">Template repo</a> ·
   <a href="https://github.com/neurowiki/example-hippocampus">Example wiki</a> ·
-  <a href="https://github.com/neurowiki/commons">Commons</a> ·
   <a href="https://github.com/neurowiki/neurowiki/blob/main/CONTRIBUTING.md">Contributing</a>
 </footer>
 
