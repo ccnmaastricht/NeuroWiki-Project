@@ -24,8 +24,7 @@ neurowiki/                     ← this template repo
 ├── REFINE_A.md                ← workflow: structural harmonization
 ├── REFINE_B.md                ← workflow: depth audit
 ├── REFINE_C.md                ← workflow: cross-link audit
-├── MERGE.md                   ← workflow: merging project wikis (community layer)
-├── merge.py                   ← script: deduplication and conflict detection
+├── validate.py                ← script: local pre-submission structural validation
 ├── setup.sh                   ← one-command project initialization
 ├── CLAUDE.md                  ← Claude Code bootstrap → reads AGENT.md
 ├── GEMINI.md                  ← Gemini CLI bootstrap → reads AGENT.md
@@ -103,7 +102,7 @@ NeuroWiki uses a dual license reflecting the two distinct layers of the project:
 
 | Layer | License |
 |-------|---------|
-| Infrastructure files (AGENT.md, INGESTION.md, REFINE_*.md, merge.py, setup.sh, etc.) | Apache 2.0 with template exception |
+| Infrastructure files (AGENT.md, INGESTION.md, REFINE_*.md, validate.py, setup.sh, etc.) | Apache 2.0 with template exception |
 | Wiki content (wiki/pages/, wiki/index.md, wiki/log.md, .bib files) | CC BY 4.0 |
 
 **The template exception** means that using NeuroWiki to build a project wiki does not make your wiki a Derivative Work of NeuroWiki. Your wiki content is entirely your own — you may license it however you choose. The Apache 2.0 terms only apply if you distribute modified versions of the infrastructure files themselves.

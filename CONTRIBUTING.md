@@ -27,8 +27,8 @@ Run the following in your project root and confirm all pass:
 # Run: REFINE_C ingestion session
 
 # 4. Validation script — catches structural errors before submission
-python3 merge.py --source wiki/ --target /dev/null --report pre-submission-check.json --lab "YourLabName"
-# Submission requires zero structural errors in the report.
+python3 validate.py --source wiki/ --report pre-submission-check.json
+# Submission requires zero errors in the report.
 ```
 
 Your `wiki/log.md` must contain at least one verified session entry (signed off by a lab member who checked claims against source PDFs). The log is submitted alongside your wiki as evidence of internal review.
@@ -50,21 +50,20 @@ Your `wiki/log.md` must contain at least one verified session entry (signed off 
 
 The following is checked automatically by CI and must also be confirmed by you:
 
-- [ ] All pages pass structural validation (`merge.py` exits with code 0)
+- [ ] All pages pass structural validation (`validate.py` exits with code 0)
 - [ ] All pages have complete YAML frontmatter (no `<!-- MISSING -->` fields)
 - [ ] No page consists entirely of stubs
 - [ ] `log.md` contains at least one signed verification entry
 - [ ] No page uses `PAP_` citation prefix (deprecated)
 - [ ] All `†` secondary citations have corresponding entries in `secondary.bib`
-- [ ] `wiki/index.md` is present and complete
 
 ---
 
 ## What Happens After Submission
 
-1. CI runs `merge.py` automatically — structural errors block the PR
+1. CI runs the hub's validation and merge scripts automatically — structural errors block the PR
 2. A community reviewer (rotating maintainer) reviews the merge report and spot-checks a sample of claims
-3. The agent runs MERGE.md to synthesize your pages into the community wiki on a branch
+3. The agent synthesizes your pages into the community wiki on a branch
 4. The reviewer approves the branch and merges
 
 Turnaround target: 2 weeks. You will be tagged on the PR if clarification is needed.
