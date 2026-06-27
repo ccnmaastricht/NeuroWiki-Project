@@ -7,6 +7,8 @@ After reading this file, read the module file for the current task.
 
 ## 1. Project Identity
 
+This file is the identity and rule layer for one specific project wiki. Each project or research line gets its own copy of this template repository with its own `AGENT.md`.
+
 ```
 Project name:             
 Main research question:   

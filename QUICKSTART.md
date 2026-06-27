@@ -77,15 +77,15 @@ the research question in Section 1. Do not process any new PDFs.
 
 ## Setting Up a New Project
 
-1. Copy the template folder to a new project directory
+Create one copy of this template per project or research line.
+
+1. On GitHub, click **Use this template → Create a new repository** on the [NeuroWiki template repo](https://github.com/neurowiki/neurowiki), then clone your new repo
 2. Open `AGENT.md` and complete Section 1 — every field marked with a blank
-3. Initialize the wiki:
+3. Run the setup script:
+   ```bash
+   bash setup.sh "My Project Name"
    ```
-   mkdir -p raw wiki/pages
-   touch wiki/primary.bib wiki/secondary.bib wiki/log.md
-   ```
-4. Create `wiki/index.md` from the template in AGENT.md Section 7, filling in the project name
-5. Add PDFs to `raw/` and run your first ingestion session
+4. Add PDFs to `raw/` and run your first ingestion session
 
 ---
 

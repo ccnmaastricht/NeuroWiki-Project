@@ -1,6 +1,8 @@
 # NeuroWiki
 
-A modular LLM-agent system for building and maintaining citation-grounded knowledge bases in computational neuroscience. Papers go in; structured, synthesized, cross-linked wiki pages come out.
+**This is a GitHub template repository.** Create one copy per project or research line — click **Use this template** on GitHub, then follow the Quickstart below.
+
+NeuroWiki is a modular LLM-agent system for building and maintaining citation-grounded knowledge bases in computational neuroscience. Papers go in; structured, synthesized, cross-linked wiki pages come out.
 
 **[neurowiki.github.io](https://neurowiki.github.io)** · **[Example project wiki](https://github.com/neurowiki/example-hippocampus)** · **[NeuroWiki Commons](https://github.com/neurowiki/commons)**
 
