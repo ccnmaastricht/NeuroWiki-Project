@@ -7,6 +7,8 @@ Process the following PDF(s), one at a time, following this workflow exactly:
 Print the session summary when done.
 ```
 
+> **Note:** `raw/` is git-ignored, so the `@` file picker in most agents will not list its contents. Type the path directly (e.g. `raw/smith2023.pdf`) rather than using the picker.
+
 ---
 
 ## Rules

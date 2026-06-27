@@ -24,6 +24,8 @@ Process the following PDFs one at a time, completing all steps before moving to 
 Print a combined session summary when done.
 ```
 
+> **Note on file picking:** Because `raw/` is git-ignored, the `@` file picker in Claude Code and similar agents will not list files inside it. Just type the path directly (e.g. `raw/smith2023.pdf`) — the agent can read it fine without the picker.
+
 ### Refinement A — Structural harmonization
 ```
 Read AGENT.md fully, then read REFINE_A.md fully.
@@ -113,7 +115,7 @@ No wiki content should be used for modeling decisions or manuscript writing unti
 
 - **Drop PDFs into `raw/` and run ingestion.** Don't manually summarize papers into wiki pages.
 - **There are no per-paper pages.** Look for the concept (`REG_v1-layer4`, `PHE_orientation-tuning`) — the synthesis is there with citations.
-- **Keep PDFs local.** `raw/` is excluded from git via `.gitignore`. Never commit PDFs to a shared repo. Only add papers you have legitimate access to.
+- **Keep PDFs local.** `raw/` is excluded from git via `.gitignore`. Never commit PDFs to a shared repo. Only add papers you have legitimate access to. Because `raw/` is git-ignored, the `@` file picker won't list its contents — type the path directly instead.
 - **`†` means unverified against source.** If it matters for your work, add the PDF and run ingestion to promote it.
 - **Don't edit pages manually** unless correcting a clear factual error. Add `<!-- QUERY: <concern> -->` and address it in the next agent session so the correction is sourced.
 - **Check `wiki/index.md` first** before asking the agent to create a new page — the concept may already exist under a different slug.
