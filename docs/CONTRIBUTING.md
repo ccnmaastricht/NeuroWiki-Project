@@ -27,7 +27,7 @@ Run the following in your project root and confirm all pass:
 # Run: REFINE_C ingestion session
 
 # 4. Validation script — catches structural errors before submission
-python3 validate.py --source wiki/ --report pre-submission-check.json
+python3 scripts/validate.py --source wiki/ --report pre-submission-check.json
 # Submission requires zero errors in the report.
 ```
 
