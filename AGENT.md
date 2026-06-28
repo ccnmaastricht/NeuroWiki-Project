@@ -10,17 +10,16 @@ After reading this file, read the module file for the current task.
 This file is the identity and rule layer for one specific project wiki. Each project or research line gets its own copy of this template repository with its own `AGENT.md`.
 
 ```
-Project name:             
-Main research question:   
-Model type(s):
-Theories:             
-Brain region(s):          
-Organism / data type:     
-Key phenomena to explain: 
+Project name:             Example Wiki: The role of gamma synchrony in early visual cortex
+Main research question:   Does gamma synchrony play a functional role in early visual cortex?
+Model type(s):            Biophysical, Functional
+Theories:                 Theory of Weakly Coupled Oscillators, Binding Through Synchrony, Binding By Enhanced Firing, etc.
+Brain region(s):          V1, V4
+Organism / data type:     Human, macaque
+Key phenomena to explain: Gamma synchrony
   - 
-Project-specific glossary:
-  - 
-Contributors:             
+Project-specific glossary: none
+Contributors:             Mario Senden
 ```
 
 ---
@@ -232,14 +231,19 @@ Always present equations before prose interpretation.>
 ### 6.3 THE_ — Neuroscientific Theory
 
 ```markdown
-# <Theory name>
-
-**Type**: THE
-**Status**: active-research-area | settled | abandoned
-**Last updated**: YYYY-MM-DD
-**Related pages**: [[CON_...]], [[MOD_...]], [[PHE_...]], [[REG_...]]
-
 ---
+type: theory
+title: <full human-readable name>
+status: active-research-area | settled | abandoned
+updated: YYYY-MM-DD
+related:
+  - PHE_<slug>
+  - MOD_<slug>
+  - REG_<slug>
+tags: []
+---
+
+# <Theory name>
 
 ## Core Claims
 
