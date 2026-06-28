@@ -16,6 +16,12 @@ mkdir -p raw wiki/pages
 grep -q "^raw/$" .gitignore 2>/dev/null || echo "raw/" >> .gitignore
 echo "raw/ excluded from git tracking (via .gitignore)"
 
+# Propagate project name into AGENT.md
+if grep -q "^Project name:" AGENT.md 2>/dev/null; then
+    sed -i "s|^Project name:.*|Project name:             ${PROJECT_NAME}|" AGENT.md
+    echo "AGENT.md project name set to: $PROJECT_NAME"
+fi
+
 # Initialize wiki files
 cat > wiki/primary.bib << 'BIBEOF'
 % primary.bib — papers with PDFs in raw/
@@ -70,7 +76,7 @@ INDEXEOF
 
 echo ""
 echo "Done. Next steps:"
-echo "  1. Open AGENT.md and fill in Section 1 (Project Identity)"
+echo "  1. Open AGENT.md and complete the remaining fields in Section 1 (research question, brain regions, theories, etc.)"
 echo "  2. Add PDFs to raw/ (never committed to git — excluded via .gitignore)"
 echo "  3. Start an ingestion session using a prompt from QUICKSTART.md"
 echo ""
