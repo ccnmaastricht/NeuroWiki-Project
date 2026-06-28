@@ -19,6 +19,8 @@ from datetime import date
 
 CONFIDENCE_TYPES = {"phenomenon", "model", "region"}
 VALID_CONFIDENCE = {"established", "debated", "speculative"}
+STATUS_TYPES = {"theory"}
+VALID_STATUS = {"active-research-area", "settled", "abandoned"}
 
 
 def parse_frontmatter(text):
@@ -78,6 +80,18 @@ def validate_page(path, fm, body):
             errors.append("Missing confidence field")
         elif val not in VALID_CONFIDENCE:
             errors.append(f"Invalid confidence value: {val!r}")
+
+    if fm.get("type") in STATUS_TYPES:
+        val = fm.get("status", "")
+        if not val or "MISSING" in val:
+            errors.append("Missing status field")
+        elif val not in VALID_STATUS:
+            errors.append(f"Invalid status value: {val!r}")
+
+    updated_val = fm.get("updated", "")
+    if updated_val and "MISSING" not in updated_val:
+        if not re.match(r'^\d{4}-\d{2}-\d{2}$', updated_val):
+            errors.append(f"Invalid updated date format: {updated_val!r} (expected YYYY-MM-DD)")
 
     full_text = path.read_text(encoding="utf-8")
     if "<!-- MISSING -->" in full_text:
@@ -144,6 +158,14 @@ def main():
     for key in sorted(all_cited_secondary - secondary_keys):
         report["citation_errors"].append(
             f"(@{key}†) used as secondary citation but not found in secondary.bib"
+        )
+    for key in sorted(primary_keys - all_cited_primary):
+        report["citation_errors"].append(
+            f"@{key} in primary.bib but not cited in any page"
+        )
+    for key in sorted(secondary_keys - all_cited_secondary):
+        report["citation_errors"].append(
+            f"@{key} in secondary.bib but not cited in any page"
         )
 
     report["log_errors"] = [] if args.skip_log else check_log(wiki_path)
