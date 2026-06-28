@@ -45,7 +45,6 @@ project-root/
 │   └── CONTRIBUTING.md   ← lab wiki submission guide
 ├── scripts/              ← tools
 │   ├── validate.py       ← pre-submission structural validator
-│   ├── merge.py          ← lab wiki merge helper
 │   └── setup.sh          ← one-command project initialization
 ├── raw/                  ← source PDFs; never modified by agent
 │   └── *.pdf
