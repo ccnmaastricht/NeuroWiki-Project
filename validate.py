@@ -116,9 +116,13 @@ def check_log(wiki_path):
     log = wiki_path / "log.md"
     if not log.exists():
         return ["log.md not found"]
-    if "✓ Verified" not in log.read_text(encoding="utf-8"):
-        return ["log.md contains no signed verification entry (missing '✓ Verified')"]
-    return []
+    text = log.read_text(encoding="utf-8")
+    errors = []
+    if "✓ Verified" not in text:
+        errors.append("log.md contains no signed verification entry (missing '✓ Verified')")
+    if "*(pending)*" in text:
+        errors.append("log.md contains unsigned session(s) — all sessions must be signed off before submission")
+    return errors
 
 
 def main():

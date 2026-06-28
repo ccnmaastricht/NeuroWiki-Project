@@ -552,5 +552,5 @@ List all such flags in the session summary.
 9. Flag uncertainty with `> ⚠️ Uncertain: <reason>`.
 10. Rewrite, don't append. Git history is the changelog.
 11. Promotions are content reviews, not find-and-replace. Re-evaluate every claim previously citing the secondary source against the actual PDF.
-12. End every session with a structured summary covering: files modified, flags raised, conflicts found, citation integrity issues.
+12. End every session with a structured summary covering: files modified, flags raised, conflicts found, citation integrity issues. The final line of every session summary must be `**Sign-off**: *(pending)*` — the human replaces this with `**Sign-off**: ✓ Verified — <name>, <date>` after completing the verification checklist.
 13. Every MOD_ page must populate `explanatory_role` in the frontmatter and the **Explanatory Scope** section in the body. State the level-relative explanatory status explicitly — phenomenological at one level and mechanistic at another are not contradictory and both must appear.

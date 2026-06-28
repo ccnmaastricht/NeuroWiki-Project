@@ -61,7 +61,13 @@ To verify: open the source PDF, confirm the claim accurately represents the sour
 
 ### 5. Sign off
 
-Add a completed entry to `wiki/log.md` and mark ✓ Verified.
+The agent writes `**Sign-off**: *(pending)*` at the end of every session entry. After completing steps 1–4 above, replace that line in `wiki/log.md` with:
+
+```
+**Sign-off**: ✓ Verified — <your name>, <date>
+```
+
+The validator fails if any `*(pending)*` remains in the log, so submission is blocked until every session is signed.
 
 ---
 
@@ -157,5 +163,5 @@ Every session gets one entry in `wiki/log.md`:
 ### Action items
 - 
 
-**Sign-off**: ✓ Verified
+**Sign-off**: *(pending)*
 ```
