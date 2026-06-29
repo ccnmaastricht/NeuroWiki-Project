@@ -77,6 +77,26 @@ and how it compares to [ALTERNATIVE].
 Draw from MOD_, THE_, PHE_, REG_, CEL_, and NET_ pages. Do not process any new PDFs.
 ```
 
+### Decision support — method or preprocessing choice
+```
+I need to decide [DECISION, e.g. which motion correction threshold to use / whether to
+bandpass filter / which decoding method to apply].
+Our data: [brief description of modality, species, paradigm, known noise properties].
+Check the Decision Guidance and Key Assumptions sections of relevant TECH_ and ANA_ pages,
+and the Relevance to This Project sections for context from prior sessions.
+Summarise what the wiki supports and flag where the decision requires information not
+covered. Do not process any new PDFs.
+```
+
+### Decision support — model assumption check
+```
+I need to assess whether [ASSUMPTION, e.g. Gaussian noise / linear summation / stationarity]
+is justified for our use of [MODEL/METHOD].
+Check the Core Assumptions section of the relevant MOD_ or ANA_ page, including the
+biological justification and when-violated sub-items.
+Summarise what the wiki says and flag any gaps. Do not process any new PDFs.
+```
+
 ### Wiki overview
 ```
 Give me an overview of the current wiki: which phenomena are well-covered vs thin,

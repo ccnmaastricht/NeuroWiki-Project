@@ -490,6 +490,13 @@ anesthetized vs. awake, chronic vs. acute. (@Key)>
 
 <Common implementations, configurations, or pipelines and what they emphasize differently.>
 
+## Decision Guidance *(add only if source material addresses this)*
+
+<When to prefer this technique: key criteria based on research question, required resolution,
+species, preparation, or infrastructure constraints. When to avoid it or prefer an
+alternative: conditions under which another technique would be more appropriate and why.
+Draw from methodological comparisons and review papers; do not speculate. (@Key)>
+
 ## Software and Hardware
 
 <Key platforms, pipelines, equipment, or reference implementations.>
@@ -538,6 +545,13 @@ Under what conditions does it fail or produce misleading results? (@Key)>
 ## Standard Variants
 
 <Common algorithmic or implementation variants and what they emphasize or sacrifice.>
+
+## Decision Guidance *(add only if source material addresses this)*
+
+<When to use this method: data requirements, question types, and assumptions that must hold
+for this to be the right choice. When to prefer an alternative: common situations where
+another method is more appropriate and why. Draw from methodological papers and comparative
+evaluations; do not speculate. (@Key)>
 
 ## Software Implementations
 
