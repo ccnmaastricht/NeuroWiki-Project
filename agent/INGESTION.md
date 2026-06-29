@@ -1,7 +1,7 @@
 # INGESTION.md
 
 ```
-Read AGENT.md fully, then read INGESTION.md fully.
+Read agent/AGENT.md fully, then read agent/INGESTION.md fully, then read agent/TEMPLATES.md fully.
 Process the following PDF(s), one at a time, following this workflow exactly:
 - raw/<filename>.pdf
 Print the session summary when done.
@@ -74,12 +74,12 @@ annote = {<contribution, if inferable>}
 
 ## Step 5 — Update or Create Wiki Pages
 
-For each affected concept page, rewrite or create it using the templates in AGENT.md Section 6.
+For each affected concept page, rewrite or create it using the templates in `agent/TEMPLATES.md` Section 1.
 
 - Freely rewrite any section when new evidence warrants it
 - Synthesize across sources; cite each claim with `(@Key)` or `(@Key†)`
-- Apply conflict resolution per AGENT.md Section 8 when this paper contradicts existing claims
-- Apply citation integrity rules per AGENT.md Section 9 when reading existing content
+- Apply conflict resolution per `agent/TEMPLATES.md` Section 3 when this paper contradicts existing claims
+- Apply citation integrity rules per `agent/TEMPLATES.md` Section 4 when reading existing content
 - Never delete a claim without replacing it or moving it to Controversies with an explanatory note
 - Update confidence when new evidence warrants it; document the change in Controversies
 

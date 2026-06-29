@@ -1,7 +1,7 @@
 # REFINE_A.md — Structural Harmonization
 
 ```
-Read AGENT.md fully, then read REFINE_A.md fully.
+Read agent/AGENT.md fully, then read agent/REFINE_A.md fully, then read agent/TEMPLATES.md fully.
 Run Structural Harmonization across all pages in wiki/pages/ and wiki/index.md.
 Follow this workflow exactly. Print the session summary when done.
 ```
@@ -17,6 +17,8 @@ If a required section is missing, add a stub — never invented text.
 ---
 
 ## Step A1 — Canonical Structure Checklist
+
+The authoritative page templates are in `agent/TEMPLATES.md` Section 1. The checklist below distils the structural requirements for auditing purposes.
 
 ### YAML frontmatter — required fields by type
 

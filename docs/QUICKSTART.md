@@ -8,7 +8,7 @@ Copy the relevant prompt and paste it at the start of an agent session.
 
 ### Ingestion — single PDF
 ```
-Read agent/AGENT.md fully, then read agent/INGESTION.md fully.
+Read agent/AGENT.md fully, then read agent/INGESTION.md fully, then read agent/TEMPLATES.md fully.
 Process the following PDF, following the workflow in agent/INGESTION.md exactly:
 - raw/<filename>.pdf
 Print the session summary when done.
@@ -16,7 +16,7 @@ Print the session summary when done.
 
 ### Ingestion — batch
 ```
-Read agent/AGENT.md fully, then read agent/INGESTION.md fully.
+Read agent/AGENT.md fully, then read agent/INGESTION.md fully, then read agent/TEMPLATES.md fully.
 Process the following PDFs one at a time, completing all steps before moving to the next:
 - raw/paper1.pdf
 - raw/paper2.pdf
@@ -25,7 +25,7 @@ Print a combined session summary when done.
 ```
 
 ```
-Read agent/AGENT.md fully, then read agent/INGESTION.md fully.
+Read agent/AGENT.md fully, then read agent/INGESTION.md fully, then read agent/TEMPLATES.md fully.
 Process all PDFs in raw/ one at a time, completing all steps before moving to the next.
 Print a combined session summary when done.
 ```
@@ -42,7 +42,7 @@ Run a Review Session. Follow agent/REVIEW.md exactly.
 
 ### Refinement A — Structural harmonization
 ```
-Read agent/AGENT.md fully, then read agent/REFINE_A.md fully.
+Read agent/AGENT.md fully, then read agent/REFINE_A.md fully, then read agent/TEMPLATES.md fully.
 Run Structural Harmonization across all pages in wiki/pages/ and wiki/index.md.
 Follow agent/REFINE_A.md exactly. Print the session summary when done.
 ```
