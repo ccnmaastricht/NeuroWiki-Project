@@ -32,6 +32,14 @@ Print a combined session summary when done.
 
 > **Note on file picking:** Because `raw/` is git-ignored, the `@` file picker in Claude Code and similar agents will not list files inside it. Just type the path directly (e.g. `raw/smith2023.pdf`).
 
+### Review — Agent-assisted flag resolution
+```
+Read agent/AGENT.md fully, then read agent/REVIEW.md fully.
+Run a Review Session. Follow agent/REVIEW.md exactly.
+```
+
+> The agent will find all unsigned log entries, ask which to review, then walk through every open ⚑, UNCITED, and UNRESOLVED flag one at a time. You make every resolution decision; the agent applies changes immediately and signs off the session when all flags are cleared.
+
 ### Refinement A — Structural harmonization
 ```
 Read agent/AGENT.md fully, then read agent/REFINE_A.md fully.
