@@ -1,7 +1,7 @@
 # REFINE_C.md — Cross-Link Audit
 
 ```
-Read AGENT.md fully, then read REFINE_C.md fully.
+Read agent/REFINE_C.md fully.
 Run the Cross-Link Audit across all pages in wiki/pages/ and wiki/index.md.
 Follow this workflow exactly. Print the session summary when done.
 ```

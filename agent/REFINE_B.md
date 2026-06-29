@@ -1,7 +1,7 @@
 # REFINE_B.md — Depth Audit
 
 ```
-Read AGENT.md fully, then read REFINE_B.md fully.
+Read agent/REFINE_B.md fully.
 Run the Depth Audit across all pages in wiki/pages/.
 Follow this workflow exactly. Save the report and print the session summary when done.
 ```

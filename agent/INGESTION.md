@@ -1,7 +1,7 @@
 # INGESTION.md
 
 ```
-Read agent/AGENT.md fully, then read agent/INGESTION.md fully, then read agent/TEMPLATES.md fully.
+Read agent/INGESTION.md fully, then read agent/TEMPLATES.md fully.
 Process the following PDF(s), one at a time, following this workflow exactly:
 - raw/<filename>.pdf
 Print the session summary when done.

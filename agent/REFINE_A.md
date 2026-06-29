@@ -1,7 +1,7 @@
 # REFINE_A.md — Structural Harmonization
 
 ```
-Read agent/AGENT.md fully, then read agent/REFINE_A.md fully, then read agent/TEMPLATES.md fully.
+Read agent/REFINE_A.md fully, then read agent/TEMPLATES.md fully.
 Run Structural Harmonization across all pages in wiki/pages/ and wiki/index.md.
 Follow this workflow exactly. Print the session summary when done.
 ```

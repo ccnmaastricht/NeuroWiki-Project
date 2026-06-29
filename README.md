@@ -27,8 +27,9 @@ neurowiki/                     ← this template repo
 ├── CURSOR.md                  ← Cursor bootstrap → reads agent/AGENT.md
 ├── AGENTS.md                  ← OpenAI Codex bootstrap → reads agent/AGENT.md
 ├── agent/                     ← agent instruction files
-│   ├── AGENT.md               ← master agent file; read every session
+│   ├── TEMPLATES.md           ← page templates, conflict resolution, citation rules
 │   ├── INGESTION.md           ← workflow: processing new PDFs
+│   ├── REVIEW.md              ← workflow: agent-assisted flag resolution
 │   ├── REFINE_A.md            ← workflow: structural harmonization
 │   ├── REFINE_B.md            ← workflow: depth audit
 │   └── REFINE_C.md            ← workflow: cross-link audit
@@ -57,13 +58,10 @@ neurowiki/                     ← this template repo
 git clone https://github.com/<you>/<your-project>
 cd <your-project>
 
-# 2. Initialize the wiki folder structure
-bash scripts/setup.sh "My Project Name"
+# 2. Run setup — it will ask for your project identity interactively
+bash scripts/setup.sh
 
-# 3. Fill in your project details
-# Open agent/AGENT.md and complete Section 1
-
-# 4. Add papers and start your first ingestion session
+# 3. Add papers and start your first ingestion session
 # Drop PDFs into raw/, then use a prompt from QUICKSTART.md
 ```
 

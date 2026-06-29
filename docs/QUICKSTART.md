@@ -8,7 +8,7 @@ Copy the relevant prompt and paste it at the start of an agent session.
 
 ### Ingestion — single PDF
 ```
-Read agent/AGENT.md fully, then read agent/INGESTION.md fully, then read agent/TEMPLATES.md fully.
+Read agent/INGESTION.md fully, then read agent/TEMPLATES.md fully.
 Process the following PDF, following the workflow in agent/INGESTION.md exactly:
 - raw/<filename>.pdf
 Print the session summary when done.
@@ -16,7 +16,7 @@ Print the session summary when done.
 
 ### Ingestion — batch
 ```
-Read agent/AGENT.md fully, then read agent/INGESTION.md fully, then read agent/TEMPLATES.md fully.
+Read agent/INGESTION.md fully, then read agent/TEMPLATES.md fully.
 Process the following PDFs one at a time, completing all steps before moving to the next:
 - raw/paper1.pdf
 - raw/paper2.pdf
@@ -25,7 +25,7 @@ Print a combined session summary when done.
 ```
 
 ```
-Read agent/AGENT.md fully, then read agent/INGESTION.md fully, then read agent/TEMPLATES.md fully.
+Read agent/INGESTION.md fully, then read agent/TEMPLATES.md fully.
 Process all PDFs in raw/ one at a time, completing all steps before moving to the next.
 Print a combined session summary when done.
 ```
@@ -34,7 +34,7 @@ Print a combined session summary when done.
 
 ### Review — Agent-assisted flag resolution
 ```
-Read agent/AGENT.md fully, then read agent/REVIEW.md fully.
+Read agent/REVIEW.md fully.
 Run a Review Session. Follow agent/REVIEW.md exactly.
 ```
 
@@ -42,7 +42,7 @@ Run a Review Session. Follow agent/REVIEW.md exactly.
 
 ### Refinement A — Structural harmonization
 ```
-Read agent/AGENT.md fully, then read agent/REFINE_A.md fully, then read agent/TEMPLATES.md fully.
+Read agent/REFINE_A.md fully, then read agent/TEMPLATES.md fully.
 Run Structural Harmonization across all pages in wiki/pages/ and wiki/index.md.
 Follow agent/REFINE_A.md exactly. Print the session summary when done.
 ```
@@ -91,12 +91,11 @@ the research question in Section 1. Do not process any new PDFs.
 Create one copy of this template per project or research line.
 
 1. On GitHub, click **Use this template → Create a new repository** on the [NeuroWiki template repo](https://github.com/ccnmaastricht/NeuroWiki-Project), then clone your new repo
-2. Open `agent/AGENT.md` and complete every field marked with a blank in Section 1.
-3. Run the setup script:
+2. Run the setup script — it will ask for your project identity interactively:
    ```bash
-   bash scripts/setup.sh "My Project Name"
+   bash scripts/setup.sh
    ```
-4. Add PDFs to `raw/` and run your first ingestion session
+3. Add PDFs to `raw/` and run your first ingestion session
 
 ---
 

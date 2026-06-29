@@ -1,7 +1,7 @@
 # REVIEW.md — Agent-Assisted Review Session
 
 ```
-Read agent/AGENT.md fully, then read agent/REVIEW.md fully.
+Read agent/REVIEW.md fully.
 Run a Review Session. Follow agent/REVIEW.md exactly.
 ```
 
