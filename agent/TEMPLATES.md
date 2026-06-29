@@ -50,10 +50,12 @@ Every number must be cited. Vague ranges without citations are not acceptable.>
 <Species, brain states, recording methods, behavioral conditions across which this holds.
 Explicitly note where it breaks down or has not been tested.>
 
-## Controversies
+## Controversies *(add only if encountered)*
 
-<Findings that contradict, qualify, or reframe the phenomenon.
-All confidence changes explained here with citations.>
+<Only include this section when the source material directly presents conflicting findings,
+disputed claims, or competing interpretations. Do not speculate about potential controversies.
+If confidence changes, document the motivating evidence here. Omit the section entirely if
+none of the above apply.>
 
 ## Modeling Implications
 
@@ -163,9 +165,11 @@ Always present equations before prose interpretation.>
 
 <How does this differ from competing models? What does each handle better?>
 
-## Controversies
+## Controversies *(add only if encountered)*
 
-<Ongoing disputes about validity, interpretation, or applicability.>
+<Only include this section when the source material directly presents disputes about validity,
+interpretation, or applicability. Do not speculate. If confidence changes, document the
+motivating evidence here. Omit the section entirely if none of the above apply.>
 
 ## Usage in the Literature
 
@@ -227,9 +231,11 @@ What mechanisms does it invoke, and which does it leave unspecified or treat as 
 What is explicitly outside its scope or left for other theories?
 Link to relevant [[PHE_...]] pages.>
 
-## Controversies
+## Controversies *(add only if encountered)*
 
-<Disputed claims, competing interpretations, or unresolved debates within or about this theory.>
+<Only include this section when the source material directly presents disputed claims,
+competing interpretations, or unresolved debates. Do not speculate. Omit entirely if none
+of the above apply.>
 
 ## Key Sources
 
@@ -272,9 +278,10 @@ Laminar and cell-type specificity where known. (@Key)>
 
 <Dominant neuronal populations. Link to [[CEL_...]] pages.>
 
-## Controversies
+## Controversies *(add only if encountered)*
 
-<Disputed claims about anatomy, connectivity, or functional role.>
+<Only include this section when the source material directly presents disputed claims about
+anatomy, connectivity, or functional role. Do not speculate. Omit entirely if none apply.>
 
 ## Modeling Considerations
 
@@ -325,10 +332,12 @@ All quantitative values cited. (@Key)>
 
 <What computations or behaviors is this cell type implicated in? (@Key)>
 
-## Controversies
+## Controversies *(add only if encountered)*
 
-<Disputed claims about classification, physiology, or function.
-Note where molecularly-defined and functionally-defined boundaries diverge.>
+<Only include this section when the source material directly presents disputed claims about
+classification, physiology, or function. Note where molecularly-defined and
+functionally-defined boundaries diverge, but only when the source material raises this
+explicitly. Omit entirely if none apply.>
 
 ## Modeling Considerations
 
@@ -378,9 +387,10 @@ Distinguish established from inferred connections. All claims cited. (@Key)>
 <How is computation organized across this circuit?
 What is the role of each component in the circuit's overall function? (@Key)>
 
-## Controversies
+## Controversies *(add only if encountered)*
 
-<Disputed claims about connectivity or functional organization.>
+<Only include this section when the source material directly presents disputed claims about
+connectivity or functional organization. Do not speculate. Omit entirely if none apply.>
 
 ## Modeling Considerations
 
@@ -484,9 +494,11 @@ anesthetized vs. awake, chronic vs. acute. (@Key)>
 
 <Key platforms, pipelines, equipment, or reference implementations.>
 
-## Controversies
+## Controversies *(add only if encountered)*
 
-<Disputed claims about signal validity, interpretation, or species generalizability. (@Key)>
+<Only include this section when the source material directly presents disputed claims about
+signal validity, interpretation, or species generalizability. Do not speculate. Omit
+entirely if none apply.>
 ```
 
 ---

@@ -117,7 +117,7 @@ Every `PHE_`, `MOD_`, `REG_`, `CEL_`, `NET_`, `TECH_`, and `ANA_` page must carr
 | `debated` | Genuine disagreement in the literature; conflicting evidence or interpretations exist |
 | `speculative` | Based on limited evidence, a single study, or theoretical inference without strong empirical grounding |
 
-Confidence upgrades and downgrades both require a note in the page's **Controversies** section citing the evidence that motivated the change.
+Confidence upgrades and downgrades both require a note citing the motivating evidence. Add or extend the **Controversies** section to record this; create the section if it does not yet exist.
 
 > **Note**: `speculative` reflects thin evidence, not design purpose. A MOD_ page with `exploratory: true` is not speculative by default — exploratory models are legitimate epistemic stages regardless of evidence quality. Distinguish evidence quality (confidence field) from explanatory status (`explanatory_character`, `marr_level`, and **Explanatory Scope** section).
 
