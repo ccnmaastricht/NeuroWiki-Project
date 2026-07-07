@@ -16,13 +16,12 @@ import sys
 from pathlib import Path
 from datetime import date
 
-
 CONFIDENCE_TYPES = {"phenomenon", "model", "method", "region"}
 VALID_CONFIDENCE = {"established", "debated", "speculative"}
 STATUS_TYPES = {"theory"}
 VALID_STATUS = {"active-research-area", "settled", "abandoned"}
-EXPLANATORY_ROLE_TYPES = {"model"}
-VALID_EXPLANATORY_ROLE = {"how-possibly", "how-actually", "phenomenological"}
+EXPLANATORY_CHARACTER_TYPES = {"model"}
+VALID_EXPLANATORY_CHARACTER = {"phenomenological", "mechanistic"}
 
 
 def parse_frontmatter(text):
@@ -90,24 +89,27 @@ def validate_page(path, fm, body):
         elif val not in VALID_STATUS:
             errors.append(f"Invalid status value: {val!r}")
 
-    if fm.get("type") in EXPLANATORY_ROLE_TYPES:
-        val = fm.get("explanatory_role", "")
+    if fm.get("type") in EXPLANATORY_CHARACTER_TYPES:
+        val = fm.get("explanatory_character", "")
         if not val or "MISSING" in val:
-            errors.append("Missing explanatory_role field")
-        elif val not in VALID_EXPLANATORY_ROLE:
-            errors.append(f"Invalid explanatory_role value: {val!r}")
+            errors.append("Missing explanatory_character field")
+        elif val not in VALID_EXPLANATORY_CHARACTER:
+            errors.append(f"Invalid explanatory_character value: {val!r}")
 
     updated_val = fm.get("updated", "")
     if updated_val and "MISSING" not in updated_val:
         if not re.match(r'^\d{4}-\d{2}-\d{2}$', updated_val):
-            errors.append(f"Invalid updated date format: {updated_val!r} (expected YYYY-MM-DD)")
+            errors.append(
+                f"Invalid updated date format: {updated_val!r} (expected YYYY-MM-DD)"
+            )
 
     full_text = path.read_text(encoding="utf-8")
     if "<!-- MISSING -->" in full_text:
         errors.append("Contains unfilled <!-- MISSING --> placeholder(s)")
 
     if body.count("SECTION STUB") > 2:
-        errors.append("Page is mostly stubs — insufficient content for submission")
+        errors.append(
+            "Page is mostly stubs — insufficient content for submission")
 
     return errors
 
@@ -119,17 +121,28 @@ def check_log(wiki_path):
     text = log.read_text(encoding="utf-8")
     errors = []
     if "✓ Verified" not in text:
-        errors.append("log.md contains no signed verification entry (missing '✓ Verified')")
+        errors.append(
+            "log.md contains no signed verification entry (missing '✓ Verified')"
+        )
     if "*(pending)*" in text:
-        errors.append("log.md contains unsigned session(s) — all sessions must be signed off before submission")
+        errors.append(
+            "log.md contains unsigned session(s) — all sessions must be signed off before submission"
+        )
     return errors
 
 
 def main():
-    parser = argparse.ArgumentParser(description="NeuroWiki pre-submission validator")
-    parser.add_argument("--source", required=True, help="Path to wiki/ directory")
-    parser.add_argument("--report", default=None, help="Output JSON report path (optional)")
-    parser.add_argument("--skip-log", action="store_true", help="Skip the log.md verification check (used in CI)")
+    parser = argparse.ArgumentParser(
+        description="NeuroWiki pre-submission validator")
+    parser.add_argument("--source",
+                        required=True,
+                        help="Path to wiki/ directory")
+    parser.add_argument("--report",
+                        default=None,
+                        help="Output JSON report path (optional)")
+    parser.add_argument("--skip-log",
+                        action="store_true",
+                        help="Skip the log.md verification check (used in CI)")
     args = parser.parse_args()
 
     wiki_path = Path(args.source)
@@ -158,7 +171,10 @@ def main():
 
             errors = validate_page(p, fm, body)
             if errors:
-                report["page_errors"].append({"page": p.name, "errors": errors})
+                report["page_errors"].append({
+                    "page": p.name,
+                    "errors": errors
+                })
 
             cited_p, cited_s = extract_citations(body)
             all_cited_primary.update(cited_p)
@@ -166,28 +182,22 @@ def main():
 
     for key in sorted(all_cited_primary - primary_keys):
         report["citation_errors"].append(
-            f"(@{key}) used as primary citation but not found in primary.bib"
-        )
+            f"(@{key}) used as primary citation but not found in primary.bib")
     for key in sorted(all_cited_secondary - secondary_keys):
         report["citation_errors"].append(
             f"(@{key}†) used as secondary citation but not found in secondary.bib"
         )
     for key in sorted(primary_keys - all_cited_primary):
         report["citation_errors"].append(
-            f"@{key} in primary.bib but not cited in any page"
-        )
+            f"@{key} in primary.bib but not cited in any page")
     for key in sorted(secondary_keys - all_cited_secondary):
         report["citation_errors"].append(
-            f"@{key} in secondary.bib but not cited in any page"
-        )
+            f"@{key} in secondary.bib but not cited in any page")
 
     report["log_errors"] = [] if args.skip_log else check_log(wiki_path)
 
-    total_errors = (
-        len(report["page_errors"]) +
-        len(report["citation_errors"]) +
-        len(report["log_errors"])
-    )
+    total_errors = (len(report["page_errors"]) +
+                    len(report["citation_errors"]) + len(report["log_errors"]))
     report["summary"] = {
         "pages_checked": page_count,
         "pages_with_errors": len(report["page_errors"]),
@@ -198,14 +208,18 @@ def main():
     }
 
     if args.report:
-        Path(args.report).write_text(json.dumps(report, indent=2), encoding="utf-8")
+        Path(args.report).write_text(json.dumps(report, indent=2),
+                                     encoding="utf-8")
         print(f"[validate.py] Report written to {args.report}")
 
     if report["summary"]["passed"]:
-        print(f"[validate.py] All checks passed. {page_count} page(s) validated.")
+        print(
+            f"[validate.py] All checks passed. {page_count} page(s) validated."
+        )
         sys.exit(0)
     else:
-        print(f"[validate.py] Validation failed. {total_errors} error(s) found.")
+        print(
+            f"[validate.py] Validation failed. {total_errors} error(s) found.")
         for entry in report["page_errors"]:
             for err in entry["errors"]:
                 print(f"  [page] {entry['page']}: {err}")
