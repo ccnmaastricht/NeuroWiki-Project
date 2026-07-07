@@ -16,12 +16,29 @@ import sys
 from pathlib import Path
 from datetime import date
 
-CONFIDENCE_TYPES = {"phenomenon", "model", "method", "region"}
+# Confidence is mandatory on PHE_, MOD_, REG_, CEL_, NET_, TECH_, ANA_ pages
+# (CLAUDE.md rule 6). These are the corresponding frontmatter `type` values.
+CONFIDENCE_TYPES = {
+    "phenomenon", "model", "region", "cell_type", "circuit", "technique",
+    "analysis"
+}
 VALID_CONFIDENCE = {"established", "debated", "speculative"}
+
 STATUS_TYPES = {"theory"}
-VALID_STATUS = {"active-research-area", "settled", "abandoned"}
+VALID_STATUS = {"emerging", "active-research-area", "settled", "abandoned"}
+
+# MOD_ pages must populate all four classification fields (CLAUDE.md rule 12).
 EXPLANATORY_CHARACTER_TYPES = {"model"}
 VALID_EXPLANATORY_CHARACTER = {"phenomenological", "mechanistic"}
+VALID_CONSTRUCTION = {"theory-derived", "data-driven", "hybrid"}
+VALID_EXPLORATORY = {"true", "false"}
+VALID_MARR_LEVEL = {"computational", "algorithmic", "implementational"}
+
+# NET_ pages carry a spatial scale; TECH_ pages carry an acquisition subtype.
+SCALE_TYPES = {"circuit"}
+VALID_SCALE = {"local", "mesoscale", "large-scale"}
+SUBTYPE_TYPES = {"technique"}
+VALID_SUBTYPE = {"acquisition", "preprocessing", "stimulation"}
 
 
 def parse_frontmatter(text):
@@ -33,11 +50,28 @@ def parse_frontmatter(text):
     fm_text = text[4:end]
     body = text[end + 4:].lstrip("\n")
     fm = {}
+    current_key = None
     for line in fm_text.splitlines():
-        if ":" in line and not line.startswith(" "):
+        if not line.strip():
+            continue
+        stripped = line.lstrip()
+        if not line.startswith(" ") and ":" in line:
             k, _, v = line.partition(":")
-            fm[k.strip()] = v.strip()
+            k = k.strip()
+            v = v.strip()
+            fm[k] = v  # tentatively a scalar; becomes a list if items follow
+            current_key = k if v == "" else None
+        elif current_key is not None and stripped.startswith("- "):
+            if not isinstance(fm.get(current_key), list):
+                fm[current_key] = []
+            fm[current_key].append(stripped[2:].strip())
     return fm, body
+
+
+def scalar(fm, key):
+    """Frontmatter value as a string; '' if absent or list-valued."""
+    v = fm.get(key, "")
+    return v if isinstance(v, str) else ""
 
 
 def parse_bib_keys(bib_path):
@@ -69,34 +103,74 @@ def extract_citations(body):
 
 def validate_page(path, fm, body):
     errors = []
+    page_type = scalar(fm, "type")
 
     for field in ["type", "title", "updated"]:
-        val = fm.get(field, "")
+        val = scalar(fm, field)
         if not val or "MISSING" in val:
             errors.append(f"Missing required frontmatter field: {field}")
 
-    if fm.get("type") in CONFIDENCE_TYPES:
-        val = fm.get("confidence", "")
+    if page_type in CONFIDENCE_TYPES:
+        val = scalar(fm, "confidence")
         if not val or "MISSING" in val:
             errors.append("Missing confidence field")
         elif val not in VALID_CONFIDENCE:
             errors.append(f"Invalid confidence value: {val!r}")
 
-    if fm.get("type") in STATUS_TYPES:
-        val = fm.get("status", "")
+    if page_type in STATUS_TYPES:
+        val = scalar(fm, "status")
         if not val or "MISSING" in val:
             errors.append("Missing status field")
         elif val not in VALID_STATUS:
             errors.append(f"Invalid status value: {val!r}")
 
-    if fm.get("type") in EXPLANATORY_CHARACTER_TYPES:
-        val = fm.get("explanatory_character", "")
+    if page_type in EXPLANATORY_CHARACTER_TYPES:
+        val = scalar(fm, "explanatory_character")
         if not val or "MISSING" in val:
             errors.append("Missing explanatory_character field")
         elif val not in VALID_EXPLANATORY_CHARACTER:
             errors.append(f"Invalid explanatory_character value: {val!r}")
 
-    updated_val = fm.get("updated", "")
+        val = scalar(fm, "construction")
+        if not val or "MISSING" in val:
+            errors.append("Missing construction field")
+        elif val not in VALID_CONSTRUCTION:
+            errors.append(f"Invalid construction value: {val!r}")
+
+        val = scalar(fm, "exploratory")
+        if not val or "MISSING" in val:
+            errors.append("Missing exploratory field")
+        elif val not in VALID_EXPLORATORY:
+            errors.append(
+                f"Invalid exploratory value: {val!r} (expected true or false)")
+
+        marr = fm.get("marr_level", "")
+        if isinstance(marr, list):
+            bad = [m for m in marr if m not in VALID_MARR_LEVEL]
+            if not marr:
+                errors.append("Missing marr_level field")
+            elif bad:
+                errors.append(f"Invalid marr_level value(s): {bad}")
+        elif not marr or "MISSING" in marr:
+            errors.append("Missing marr_level field")
+        else:
+            errors.append("marr_level must be a list")
+
+    if page_type in SCALE_TYPES:
+        val = scalar(fm, "scale")
+        if not val or "MISSING" in val:
+            errors.append("Missing scale field")
+        elif val not in VALID_SCALE:
+            errors.append(f"Invalid scale value: {val!r}")
+
+    if page_type in SUBTYPE_TYPES:
+        val = scalar(fm, "subtype")
+        if not val or "MISSING" in val:
+            errors.append("Missing subtype field")
+        elif val not in VALID_SUBTYPE:
+            errors.append(f"Invalid subtype value: {val!r}")
+
+    updated_val = scalar(fm, "updated")
     if updated_val and "MISSING" not in updated_val:
         if not re.match(r'^\d{4}-\d{2}-\d{2}$', updated_val):
             errors.append(
@@ -181,12 +255,23 @@ def main():
             all_cited_secondary.update(cited_s)
 
     for key in sorted(all_cited_primary - primary_keys):
-        report["citation_errors"].append(
-            f"(@{key}) used as primary citation but not found in primary.bib")
+        if key in secondary_keys:
+            report["citation_errors"].append(
+                f"(@{key}) cited without the † dagger but @{key} is in "
+                "secondary.bib — secondary citations require the dagger")
+        else:
+            report["citation_errors"].append(
+                f"(@{key}) used as primary citation but not found in primary.bib"
+            )
     for key in sorted(all_cited_secondary - secondary_keys):
-        report["citation_errors"].append(
-            f"(@{key}†) used as secondary citation but not found in secondary.bib"
-        )
+        if key in primary_keys:
+            report["citation_errors"].append(
+                f"(@{key}†) cited with the † dagger but @{key} is in "
+                "primary.bib — primary citations must not carry the dagger")
+        else:
+            report["citation_errors"].append(
+                f"(@{key}†) used as secondary citation but not found in "
+                "secondary.bib")
     for key in sorted(primary_keys - all_cited_primary):
         report["citation_errors"].append(
             f"@{key} in primary.bib but not cited in any page")
