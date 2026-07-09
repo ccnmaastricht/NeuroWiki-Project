@@ -10,10 +10,10 @@ NeuroWiki is a modular LLM-agent system for building and maintaining citation-gr
 
 ## What it does
 
-- Reads PDFs and synthesizes their content into concept pages (phenomena, models, theories, brain regions, cell types, circuits, paradigms, methods, datasets)
+- Reads PDFs and synthesizes their content into concept pages (phenomena, models, theories, brain regions, cell types, circuits, paradigms, methods, simulation software, datasets)
 - Tracks citation provenance with a two-tier system: `(@Key)` for verified primary sources, `(@Key†)` for reconstructed secondary citations
 - Surfaces conflicts between papers for human review rather than silently resolving them
-- Maintains confidence levels (`established` / `debated` / `speculative`) on every page
+- Maintains confidence levels (`established` / `debated` / `speculative`) on every evidence-bearing page
 - Supports structural harmonization, depth auditing, and cross-link auditing as independent refinement workflows
 - Scales from a single project into a lab-level wiki via pull request submission to a lab wiki repository
 
